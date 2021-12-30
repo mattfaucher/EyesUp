@@ -29,7 +29,7 @@ const Home = ({ navigation }) => (
 		<StatusBar style="auto" />
 		<Text>Home Screen</Text>
 		<Button
-			title="Go to Settings"
+			title="Go to Settings!"
 			onPress={() => navigation.navigate("Settings")}
 		>
 		</Button>
