@@ -33,10 +33,7 @@ const Home = ({ navigation }) => (
 			onPress={() => navigation.navigate("Settings")}
 		>
 		</Button>
-		<Image
-			source={require('./assets/gear.png')}
-			style={styleLogo.settingIcon}
-		/>
+		
 	</SafeAreaView>
 );
 
