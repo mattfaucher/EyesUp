@@ -3,8 +3,10 @@ import {
 	SafeAreaView,
 	Text,
 	StatusBar,
-	Button
+	Image,
+	Pressable
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-web';
 
 const style = {
 	flex: 1,
@@ -12,16 +14,20 @@ const style = {
 	justifyContent: 'center'
 }
 
+
 const Home = ({ navigation }) => (
 	<SafeAreaView style={style}>
 		<StatusBar style="auto" />
 		<Text>Home Screen</Text>
-		<Button
-			title="Go to Settings"
-			onPress={() => navigation.navigate("Settings")}
-		>
-		</Button>
+		
+		<Pressable onPress={() => navigation.navigate("Settings")}>
+			<Image
+				style={{width: 50, height:50}}
+				source={require('../assets/gear.png')}
+			/>
+		</Pressable>
 	</SafeAreaView>
+	
 );
 
 export default Home;
