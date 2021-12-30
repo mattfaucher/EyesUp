@@ -22,9 +22,6 @@ const Home = ({ navigation }) => (
 			onPress={() => navigation.navigate("Settings")}
 		>
 		</Button>
-		<Button
-			title = "Another button">
-		</Button>
 	</SafeAreaView>
 );
 
