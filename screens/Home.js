@@ -4,7 +4,8 @@ import {
 	Text,
 	StatusBar,
 	Button,
-	Image
+	Image,
+	StyleSheet
 } from 'react-native';
 
 const style = {
@@ -12,6 +13,16 @@ const style = {
 	alignItems: 'center',
 	justifyContent: 'center'
 }
+
+const styleLogo = StyleSheet.create({
+	container: {
+		paddingTop: 50,
+	},
+	settingIcon: {
+		width: 50,
+		height: 50,
+	}
+});
 
 const Home = ({ navigation }) => (
 	<SafeAreaView style={style}>
@@ -22,6 +33,10 @@ const Home = ({ navigation }) => (
 			onPress={() => navigation.navigate("Settings")}
 		>
 		</Button>
+		<Image
+			source={require('./assets/gear.png')}
+			style={styleLogo.settingIcon}
+		/>
 	</SafeAreaView>
 );
 
