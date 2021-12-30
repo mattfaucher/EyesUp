@@ -3,7 +3,8 @@ import {
 	SafeAreaView,
 	Text,
 	StatusBar,
-	Button
+	Button,
+	Image
 } from 'react-native';
 
 const style = {
@@ -20,6 +21,9 @@ const Home = ({ navigation }) => (
 			title="Go to Settings"
 			onPress={() => navigation.navigate("Settings")}
 		>
+		</Button>
+		<Button
+			title = "Another button">
 		</Button>
 	</SafeAreaView>
 );
