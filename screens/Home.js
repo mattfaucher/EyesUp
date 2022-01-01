@@ -1,12 +1,11 @@
 import React from 'react';
 import {
 	SafeAreaView,
-	Text,
 	StatusBar,
 	Image,
-	Pressable
+	Pressable,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-web';
+import Timer from './components/Timer.js';
 
 const style = {
 	flex: 1,
@@ -14,20 +13,18 @@ const style = {
 	justifyContent: 'center'
 }
 
-
-const Home = ({ navigation }) => (
-	<SafeAreaView style={style}>
-		<StatusBar style="auto" />
-		<Text>Home Screen</Text>
-		
-		<Pressable onPress={() => navigation.navigate("Settings")}>
-			<Image
-				style={{width: 50, height:50}}
-				source={require('../assets/gear.png')}
-			/>
-		</Pressable>
-	</SafeAreaView>
-	
-);
-
-export default Home;
+export default function Home({ navigation }) {
+	return (
+		<SafeAreaView style={style}>
+			<StatusBar style="auto" />
+			<Timer duration={10} />
+			<Pressable
+				onPress={() => navigation.navigate("Settings")}>
+				<Image
+					style={{ width: 50, height: 50 }}
+					source={require('../assets/gear.png')}
+				/>
+			</Pressable>
+		</SafeAreaView>
+	);
+}
