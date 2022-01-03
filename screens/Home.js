@@ -1,30 +1,48 @@
 import React from 'react';
 import {
+	StyleSheet,
 	SafeAreaView,
 	StatusBar,
 	Image,
 	Pressable,
+	View
 } from 'react-native';
 import Timer from './components/Timer.js';
 
-const style = {
-	flex: 1,
-	alignItems: 'center',
-	justifyContent: 'center'
-}
+// 20 min (in seconds)
+const duration = 1200;
 
 export default function Home({ navigation }) {
 	return (
-		<SafeAreaView style={style}>
+		<SafeAreaView style={styles.wrapper}>
 			<StatusBar style="auto" />
-			<Timer duration={10} />
-			<Pressable
-				onPress={() => navigation.navigate("Settings")}>
-				<Image
-					style={{ width: 50, height: 50 }}
-					source={require('../assets/gear.png')}
-				/>
-			</Pressable>
+			<Timer duration={duration} />
+			<View style={styles.settingsButton}>
+				<Pressable
+					onPress={() => navigation.navigate("Settings")}>
+					<Image
+						style={styles.settingsIcon}
+						source={require('../assets/gear.png')}
+					/>
+				</Pressable>
+			</View>
 		</SafeAreaView>
 	);
 }
+
+const styles = StyleSheet.create({
+	wrapper: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	settingsButton: {
+		position: 'absolute',
+		right: 10,
+		top: 10
+	},
+	settingsIcon: {
+		width: 50,
+		height: 50
+	}
+});
