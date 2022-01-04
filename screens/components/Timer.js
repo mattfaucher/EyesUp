@@ -8,6 +8,7 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
 export default function Timer({ duration }) {
 	const [isPlaying, setIsPlaying] = useState(true);
+	const [key, setKey] = useState(0);
 	return (
 		<View>
 			<CountdownCircleTimer
@@ -15,6 +16,7 @@ export default function Timer({ duration }) {
 				duration={duration}
 				colors="#A30000"
 				onComplete={() => [true, duration]}
+				key={key}
 			>
 				{({ remainingTime, animatedColor }) => (
 					<Animated.Text style={{ color: animatedColor }}>
@@ -25,6 +27,14 @@ export default function Timer({ duration }) {
 			<Button
 				title={isPlaying ? 'Stop Timer' : 'Resume Timer'}
 				onPress={() => setIsPlaying(!isPlaying)}
+			>
+			</Button>
+			<Button
+				title='Reset Timer'
+				onPress={() => {
+					setIsPlaying(false)
+					setKey(prevKey => prevKey + 1)
+				}}
 			>
 			</Button>
 		</View>
