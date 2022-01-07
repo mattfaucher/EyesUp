@@ -5,18 +5,25 @@ import {
 	StatusBar,
 	Image,
 	Pressable,
-	View
+	View,
+	Text
 } from 'react-native';
 import Timer from './components/Timer.js';
 
 // 20 min (in seconds)
 const duration = 1200;
 
-export default function Home({ navigation }) {
+
+export default function Home({ navigation, timeSpecified}) {
+
+	
+
 	return (
 		<SafeAreaView style={styles.wrapper}>
 			<StatusBar style="auto" />
+			
 			<Timer duration={duration} />
+			
 			<View style={styles.settingsButton}>
 				<Pressable
 					onPress={() => navigation.navigate("Settings")}>
