@@ -7,18 +7,15 @@ import {
 	StyleSheet,
 	TextInput
 } from 'react-native';
-import Timer from './components/Timer';
 
 const style = {
 	flex: 1,
 	alignItems: 'center',
 	justifyContent: 'center'
 }
-const Settings = ({ navigation }) => {
+export default function Settings({ navigation}) {
 
 	const [number, onChangeNumber] = React.useState(null);
-
-
 	return (
 	<SafeAreaView style={style}>
 		<StatusBar style="auto" />
@@ -38,13 +35,9 @@ const Settings = ({ navigation }) => {
 		
 		<Button
 			title = "Create new timer"
-			
 			onPress={() => {
-				
-				//<Timer duration={2000} />
-				navigation.navigate("Home")
+				//TODO: alter key within Timer to reset time?
 			}}
-			
 		>
 		</Button>
 
@@ -52,4 +45,3 @@ const Settings = ({ navigation }) => {
 	);
 };
 
-export default Settings;

@@ -14,9 +14,7 @@ import Timer from './components/Timer.js';
 const duration = 1200;
 
 
-export default function Home({ navigation, timeSpecified}) {
-
-	
+export default function Home({ navigation}) {
 
 	return (
 		<SafeAreaView style={styles.wrapper}>
@@ -33,6 +31,17 @@ export default function Home({ navigation, timeSpecified}) {
 					/>
 				</Pressable>
 			</View>
+			<View style={styles.calendarButton}>
+				<Pressable
+					onPress={() => navigation.navigate("UserCalendar")}>
+					<Image
+						style={styles.settingsIcon}
+						source={require('../assets/calendar.png')}
+					/>
+				</Pressable>
+			</View>
+
+			
 		</SafeAreaView>
 	);
 }
@@ -46,6 +55,11 @@ const styles = StyleSheet.create({
 	settingsButton: {
 		position: 'absolute',
 		right: 10,
+		top: 10
+	},
+	calendarButton: {
+		position: 'absolute',
+		left: 10,
 		top: 10
 	},
 	settingsIcon: {
