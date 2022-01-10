@@ -3,9 +3,7 @@ import {
 	SafeAreaView,
 	Text,
 	StatusBar,
-	Button,
-	StyleSheet,
-	TextInput
+	Button
 } from 'react-native';
 
 const style = {
@@ -13,21 +11,22 @@ const style = {
 	alignItems: 'center',
 	justifyContent: 'center'
 }
-export default function Settings({ navigation}) {
+export default function Settings({ navigation }) {
 
-	const [number, onChangeNumber] = React.useState(null);
 	return (
-	<SafeAreaView style={style}>
-		<StatusBar style="auto" />
-		<Text>Settings Screen</Text>
-		<Button
-			title="Go Home"
-			onPress={() => navigation.navigate("Home")}
-		>
-		</Button>
-		
+		<SafeAreaView style={style}>
+			<StatusBar style="auto" />
+			<Text>Settings Screen</Text>
+			<Button
+				title="Go Home"
+				onPress={() => navigation.navigate("Home")}
+			>
 
-	</SafeAreaView>
+
+			</Button>
+
+
+		</SafeAreaView>
 	);
 };
 
