@@ -25,21 +25,7 @@ export default function Settings({ navigation}) {
 			onPress={() => navigation.navigate("Home")}
 		>
 		</Button>
-		<TextInput
-			style={StyleSheet.TextInput}
-			onChangeText={onChangeNumber}
-			value={number}
-			placeholder="input new timer duration"
-			keyboardType="number-pad"
-		/>
 		
-		<Button
-			title = "Create new timer"
-			onPress={() => {
-				//TODO: alter key within Timer to reset time?
-			}}
-		>
-		</Button>
 
 	</SafeAreaView>
 	);
