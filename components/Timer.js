@@ -12,7 +12,7 @@ export default function Timer() {
 	const [isPlaying, setIsPlaying] = useState(true);
 	const [resetKey, setResetKey] = useState(0);
 	const [duration, setDuration] = useState(1200);
-	const prevDuration = usePrevious(duration);
+	//const prevDuration = usePrevious(duration);
 
 	const incrementTimer = () => {
 		// 40 min is the maximum duration
@@ -45,6 +45,7 @@ export default function Timer() {
 				>
 				</Button>
 				<CountdownCircleTimer
+					size={200}
 					isPlaying={isPlaying}
 					duration={duration}
 					colors="#A30000"
@@ -52,7 +53,7 @@ export default function Timer() {
 					key={resetKey}
 				>
 					{({ remainingTime, animatedColor }) => (
-						<Animated.Text style={{ color: animatedColor }}>
+						<Animated.Text style={{ color: animatedColor, fontSize: 48 }}>
 							{formatTime(remainingTime)}
 						</Animated.Text>
 					)}
