@@ -19,6 +19,7 @@ const App = () => {
           screenOptions={{
             tabBarActiveTintColor: '#007AFF',
             tabBarInactiveTintColor: 'grey',
+            tabBarActiveBackgroundColor: '#e8e8e8',
             tabBarShowLabel: false,
             tabBarStyle: {
               height: 100,
