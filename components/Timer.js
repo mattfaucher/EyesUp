@@ -64,7 +64,7 @@ export default function Timer() {
 				</View>
 			}
 			<Button
-				title={isPlaying ? 'Stop Timer' : 'Resume Timer'}
+				title={isPlaying ? 'Stop Timer' : 'Start Timer'}
 				onPress={() => setIsPlaying(prev => !prev)}
 			>
 			</Button>
