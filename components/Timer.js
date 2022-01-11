@@ -3,7 +3,7 @@ import {
 	View,
 	Animated,
 	Button,
-	StyleSheet,
+	StyleSheet
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -62,20 +62,28 @@ export default function Timer() {
 					<Icon name="chevron-up" size={80} style={styles.chevronStyle} onPress={incrementTimer} />
 				}
 			</View>
-			<Button
-				title={isPlaying ? 'Stop Timer' : 'Start Timer'}
-				onPress={() => setIsPlaying(prev => !prev)}
-			>
-			</Button>
-			<Button
-				title='Reset Timer'
-				onPress={() => {
-					setIsPlaying(false);
-					setResetKey(prev => prev + 1);
-				}}
-			>
-			</Button>
-		</View>
+			<View style={styles.container}>
+				<View style={styles.button}>
+					<Button
+						title={isPlaying ? 'Stop Timer' : 'Start Timer'}
+						color='white'
+						onPress={() => setIsPlaying(prev => !prev)}
+					>
+					</Button>
+				</View>
+				<View style={styles.button}>
+					<Button
+						title='Reset Timer'
+						color='white'
+						onPress={() => {
+							setIsPlaying(false);
+							setResetKey(prev => prev + 1);
+						}}
+					>
+					</Button>
+				</View>
+			</View>
+		</View >
 	);
 }
 
@@ -86,10 +94,29 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
+
+	container: {
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	button: {
+		width: '40%',
+		height: 40,
+		marginVertical: 50,
+		backgroundColor: '#007AFF',
+		elevation: 30,
+		shadowColor: 'rgba(0, 0, 0, 0.4)',
+		shadowOpacity: 0.8,
+		shadowRadius: 15,
+		shadowOffset: { width: 1, height: 13 },
+		borderRadius: 20,
+	},
+
 	chevronStyle: {
 		marginHorizontal: 10,
 		color: '#007AFF'
 	}
+
 });
 
 // Helper function to format time to MM:SS
