@@ -6,6 +6,7 @@ import {
 	StyleSheet
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Timer() {
 	const [isPlaying, setIsPlaying] = useState(true);
@@ -39,7 +40,7 @@ export default function Timer() {
 			<View style={styles.viewStyle}>
 				{isPlaying ?
 					<></> :
-					<Button title="DEC" onPress={decrementTimer}></Button>
+					<Icon name="chevron-down" size={80} style={styles.chevronStyle} onPress={decrementTimer} />
 				}
 				<CountdownCircleTimer
 					size={200}
@@ -58,7 +59,7 @@ export default function Timer() {
 
 				{isPlaying ?
 					<></> :
-					<Button title="INC" onPress={incrementTimer}></Button>
+					<Icon name="chevron-up" size={80} style={styles.chevronStyle} onPress={incrementTimer} />
 				}
 			</View>
 			<View style={styles.container}>
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
+
 	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between'
@@ -109,6 +111,11 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: 1, height: 13 },
 		borderRadius: 20,
 	},
+
+	chevronStyle: {
+		marginHorizontal: 10,
+		color: '#007AFF'
+	}
 
 });
 

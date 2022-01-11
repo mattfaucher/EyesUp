@@ -3,27 +3,18 @@ import {
 	SafeAreaView,
 	StatusBar,
 	Text,
-	Button,
 	View
 } from 'react-native';
 import {
 	Calendar
 } from 'react-native-calendars';
 
-
-
-
-export default function UserCalendar({ navigation }) {
+export default function UserCalendar() {
 
 	return (
 		<SafeAreaView >
 			<StatusBar style="auto" />
 			<Text>Calendar Screen</Text>
-			<Button
-				title="Go Home"
-				onPress={() => navigation.navigate("Home")}
-			>
-			</Button>
 			<View >
 				<Calendar
 					current={'2022-01-08'}
@@ -43,10 +34,6 @@ export default function UserCalendar({ navigation }) {
 					disableAllTouchEventsForDisabledDays={true}
 				/>
 			</View>
-
 		</SafeAreaView>
 	);
 };
-
-
-
