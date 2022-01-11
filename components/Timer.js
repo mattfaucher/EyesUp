@@ -34,35 +34,33 @@ export default function Timer() {
 		}
 	}
 
-	const countdownTimer =
-		<CountdownCircleTimer
-			size={200}
-			isPlaying={isPlaying}
-			duration={duration}
-			colors="#A30000"
-			onComplete={() => [true, duration]}
-			key={resetKey}
-		>
-			{({ remainingTime, animatedColor }) => (
-				<Animated.Text style={{ color: animatedColor, fontSize: 48 }}>
-					{formatTime(remainingTime)}
-				</Animated.Text>
-			)}
-		</CountdownCircleTimer>;
-
 	return (
 		<View>
-			{isPlaying ? countdownTimer :
-				<View style={styles.viewStyle}>
-					<Button
-						title="DEC"
-						onPress={decrementTimer}
-					>
-					</Button>
-					{countdownTimer}
+			<View style={styles.viewStyle}>
+				{isPlaying ?
+					<></> :
+					<Button title="DEC" onPress={decrementTimer}></Button>
+				}
+				<CountdownCircleTimer
+					size={200}
+					isPlaying={isPlaying}
+					duration={duration}
+					colors="#A30000"
+					onComplete={() => [true, duration]}
+					key={resetKey}
+				>
+					{({ remainingTime, animatedColor }) => (
+						<Animated.Text style={{ color: animatedColor, fontSize: 48 }}>
+							{formatTime(remainingTime)}
+						</Animated.Text>
+					)}
+				</CountdownCircleTimer>
+
+				{isPlaying ?
+					<></> :
 					<Button title="INC" onPress={incrementTimer}></Button>
-				</View>
-			}
+				}
+			</View>
 			<Button
 				title={isPlaying ? 'Stop Timer' : 'Start Timer'}
 				onPress={() => setIsPlaying(prev => !prev)}
