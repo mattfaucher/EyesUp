@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './screens/Home.js';
 import Settings from './screens/Settings.js';
 import UserCalendar from './screens/UserCalendar.js';
+import { tintColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,15 +14,21 @@ const App = () => {
   return (
     <NavigationContainer>
       <StatusBar style='auto'></StatusBar>
-      <Tab.Navigator initialRouteName="Home">
+      <Tab.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          tabBarActiveTintColor: '#007AFF',
+          tabBarInactiveTintColor: 'grey',
+          tabBarShowLabel: false,
+        }}
+      >
         <Tab.Screen
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: ({ tintColor }) => (
-              <Icon name="hourglass" size={24} color={tintColor} />
-            ),
-            tabBarActiveTintColor: '#007AFF'
+            tabBarIcon: ({ color }) => (
+              <Icon name="hourglass" size={30} color={color} />
+            )
           }}
         />
         <Tab.Screen
@@ -29,8 +36,8 @@ const App = () => {
           component={UserCalendar}
           options={{
             tabBarLabel: 'Calendar',
-            tabBarIcon: () => (
-              <Icon name="calendar" size={24} color="grey" />
+            tabBarIcon: ({ color }) => (
+              <Icon name="calendar" size={30} color={color} />
             )
           }}
         />
@@ -39,8 +46,8 @@ const App = () => {
           component={Settings}
           options={{
             tabBarLabel: 'Settings',
-            tabBarIcon: () => (
-              <Icon name="cog" size={24} color="grey" />
+            tabBarIcon: ({ color }) => (
+              <Icon name="sliders" size={30} color={color} />
             )
           }}
         />
