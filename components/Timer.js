@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
 	View,
 	Animated,
@@ -18,8 +18,10 @@ export default function Timer() {
 		// 40 min is the maximum duration
 		if (duration >= (60 * 40)) {
 			setDuration(60 * 40);
+			setResetKey(prev => prev + 1);
 		} else {
 			setDuration(prev => prev + 60);
+			setResetKey(prev => prev + 1);
 		}
 	}
 
@@ -27,18 +29,24 @@ export default function Timer() {
 		// 5 min is the minimum duration
 		if (duration <= (60 * 5)) {
 			setDuration(60 * 5);
+			setResetKey(prev => prev + 1);
 		} else {
 			setDuration(prev => prev - 60);
+			setResetKey(prev => prev + 1);
 		}
 	}
 
 	return (
 		<View>
 			<View style={styles.viewStyle}>
-				<Button title="Dec" onPress={decrementTimer}></Button>
+				<Button
+					title="Decrement"
+					onPress={decrementTimer}
+				>
+				</Button>
 				<CountdownCircleTimer
 					isPlaying={isPlaying}
-					duration={duration != prevDuration ? duration : prevDuration}
+					duration={duration}
 					colors="#A30000"
 					onComplete={() => [true, duration]}
 					key={resetKey}
@@ -49,7 +57,7 @@ export default function Timer() {
 						</Animated.Text>
 					)}
 				</CountdownCircleTimer>
-				<Button title="Inc" onPress={incrementTimer}></Button>
+				<Button title="Increment" onPress={incrementTimer}></Button>
 			</View>
 			<Button
 				title={isPlaying ? 'Stop Timer' : 'Resume Timer'}
