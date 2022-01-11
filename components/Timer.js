@@ -3,10 +3,9 @@ import {
 	View,
 	Animated,
 	Button,
-	StyleSheet,
+	StyleSheet
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function Timer() {
 	const [isPlaying, setIsPlaying] = useState(true);
@@ -62,22 +61,26 @@ export default function Timer() {
 					<Button title="INC" onPress={incrementTimer}></Button>
 				}
 			</View>
-			<View style={styles.playStopResetButtonsStyle}>
-				<Button
-					title={isPlaying ? 'Stop Timer' : 'Start Timer'}
-					onPress={() => setIsPlaying(prev => !prev)}
-
-				>
-				</Button>
-
-				<Button
-					title='Reset Timer'
-					onPress={() => {
-						setIsPlaying(false);
-						setResetKey(prev => prev + 1);
-					}}
-				>
-				</Button>
+			<View style={styles.container}>
+				<View style={styles.button}>
+					<Button
+						title={isPlaying ? 'Stop Timer' : 'Start Timer'}
+						color={'white'}
+						onPress={() => setIsPlaying(prev => !prev)}
+					>
+					</Button>
+				</View>
+				<View style={styles.button}>
+					<Button
+						title='Reset Timer'
+						color='white'
+						onPress={() => {
+							setIsPlaying(false);
+							setResetKey(prev => prev + 1);
+						}}
+					>
+					</Button>
+				</View>
 			</View>
 		</View >
 	);
@@ -90,12 +93,26 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
-	playStopResetButtonsStyle: {
-		display: 'flex',
+	container: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		backgroundColor: 'blue',
+		justifyContent: 'space-between'
+	},
+	button: {
+		width: '40%',
+		height: 40,
+		marginVertical: 50,
+		backgroundColor: '#007AFF',
+		elevation: 30,
+		shadowColor: 'rgba(0, 0, 0, 0.4)',
+		shadowOpacity: 0.8,
+		shadowRadius: 15,
+		shadowOffset: { width: 1, height: 13 },
+		borderRadius: 20,
+	},
+	space: {
+		width: 30,
+		height: 40,
+		backgroundColor: 'white'
 
 	},
 });
