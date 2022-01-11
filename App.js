@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,41 +11,54 @@ const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <>
       <StatusBar style='auto'></StatusBar>
-      <Tab.Navigator initialRouteName="Home">
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: () => (
-              <Icon name="hourglass" size={24} color="grey" />
-            )
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            tabBarActiveTintColor: '#007AFF',
+            tabBarInactiveTintColor: 'grey',
+            tabBarActiveBackgroundColor: '#e8e8e8',
+            tabBarShowLabel: false,
+            tabBarStyle: {
+              height: 100,
+              paddingBottom: 30
+            }
           }}
-        />
-        <Tab.Screen
-          name="Calendar"
-          component={UserCalendar}
-          options={{
-            tabBarLabel: 'Calendar',
-            tabBarIcon: () => (
-              <Icon name="calendar" size={24} color="grey" />
-            )
-          }}
-        />
-        <Tab.Screen
-          name="Settings"
-          component={Settings}
-          options={{
-            tabBarLabel: 'Settings',
-            tabBarIcon: () => (
-              <Icon name="cog" size={24} color="grey" />
-            )
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+        >
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{
+              tabBarIcon: ({ color }) => (
+                <Icon name="hourglass" size={30} color={color} />
+              )
+            }}
+          />
+          <Tab.Screen
+            name="Calendar"
+            component={UserCalendar}
+            options={{
+              tabBarLabel: 'Calendar',
+              tabBarIcon: ({ color }) => (
+                <Icon name="calendar" size={30} color={color} />
+              )
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              tabBarLabel: 'Settings',
+              tabBarIcon: ({ color }) => (
+                <Icon name="sliders" size={30} color={color} />
+              )
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
