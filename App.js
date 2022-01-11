@@ -1,23 +1,57 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './screens/Home.js';
 import Settings from './screens/Settings.js';
 import UserCalendar from './screens/UserCalendar.js';
 
-// Create the navigation stack
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="UserCalendar" component={UserCalendar} />
-      </Stack.Navigator>
+      <StatusBar style='auto'></StatusBar>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: () => (
+              <Icon name="hourglass" size={24} color="grey" />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="Calendar"
+          component={UserCalendar}
+          options={{
+            tabBarLabel: 'Calendar',
+            tabBarIcon: () => (
+              <Icon name="calendar" size={24} color="grey" />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: () => (
+              <Icon name="cog" size={24} color="grey" />
+            )
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+
+});
 
 export default App;

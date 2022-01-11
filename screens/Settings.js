@@ -2,23 +2,15 @@ import React from 'react';
 import {
 	SafeAreaView,
 	Text,
-	StatusBar,
-	Button
+	StatusBar
 } from 'react-native';
 
-export default function Settings({ navigation }) {
+export default function Settings() {
 
 	return (
 		<SafeAreaView style={styles}>
 			<StatusBar style="auto" />
 			<Text>Settings Screen</Text>
-			<Button
-				title="Go Home"
-				onPress={() => navigation.navigate("Home")}
-			>
-			</Button>
-
-
 		</SafeAreaView>
 	);
 };
