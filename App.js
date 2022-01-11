@@ -3,9 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Home from './screens/Home.js';
-import Settings from './screens/Settings.js';
-import UserCalendar from './screens/UserCalendar.js';
+import Home from './src/screens/Home.js';
+import Settings from './src/screens/Settings.js';
+import UserCalendar from './src/screens/UserCalendar.js';
 
 const Tab = createBottomTabNavigator();
 
