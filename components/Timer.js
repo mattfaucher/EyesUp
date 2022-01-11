@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	chevronStyle: {
-		marginHorizontal: 10
+		marginHorizontal: 10,
+		color: '#007AFF'
 	}
 });
 

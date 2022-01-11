@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -19,10 +18,10 @@ const App = () => {
           name="Home"
           component={Home}
           options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: () => (
-              <Icon name="hourglass" size={24} color="grey" />
-            )
+            tabBarIcon: ({ tintColor }) => (
+              <Icon name="hourglass" size={24} color={tintColor} />
+            ),
+            tabBarActiveTintColor: '#007AFF'
           }}
         />
         <Tab.Screen
