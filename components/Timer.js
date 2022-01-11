@@ -6,6 +6,7 @@ import {
 	StyleSheet,
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function Timer() {
 	const [isPlaying, setIsPlaying] = useState(true);
@@ -61,20 +62,24 @@ export default function Timer() {
 					<Button title="INC" onPress={incrementTimer}></Button>
 				}
 			</View>
-			<Button
-				title={isPlaying ? 'Stop Timer' : 'Start Timer'}
-				onPress={() => setIsPlaying(prev => !prev)}
-			>
-			</Button>
-			<Button
-				title='Reset Timer'
-				onPress={() => {
-					setIsPlaying(false);
-					setResetKey(prev => prev + 1);
-				}}
-			>
-			</Button>
-		</View>
+			<View style={styles.playStopResetButtonsStyle}>
+				<Button
+					title={isPlaying ? 'Stop Timer' : 'Start Timer'}
+					onPress={() => setIsPlaying(prev => !prev)}
+
+				>
+				</Button>
+
+				<Button
+					title='Reset Timer'
+					onPress={() => {
+						setIsPlaying(false);
+						setResetKey(prev => prev + 1);
+					}}
+				>
+				</Button>
+			</View>
+		</View >
 	);
 }
 
@@ -84,7 +89,15 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center'
-	}
+	},
+	playStopResetButtonsStyle: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		backgroundColor: 'blue',
+
+	},
 });
 
 // Helper function to format time to MM:SS
