@@ -6,21 +6,26 @@ import {
 	Button
 } from 'react-native';
 
-const style = {
+export default function Settings({ navigation }) {
+
+	return (
+		<SafeAreaView style={styles}>
+			<StatusBar style="auto" />
+			<Text>Settings Screen</Text>
+			<Button
+				title="Go Home"
+				onPress={() => navigation.navigate("Home")}
+			>
+			</Button>
+
+
+		</SafeAreaView>
+	);
+};
+
+const styles = {
 	flex: 1,
 	alignItems: 'center',
 	justifyContent: 'center'
 }
-const Settings = ({ navigation }) => (
-	<SafeAreaView style={style}>
-		<StatusBar style="auto" />
-		<Text>Settings Screen</Text>
-		<Button
-			title="Go Home"
-			onPress={() => navigation.navigate("Home")}
-		>
-		</Button>
-	</SafeAreaView>
-);
 
-export default Settings;
