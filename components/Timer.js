@@ -4,8 +4,11 @@ import {
 	Animated,
 	Button,
 	StyleSheet,
+	Image,
+	Pressable
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
+
 
 export default function Timer() {
 	const [isPlaying, setIsPlaying] = useState(true);
@@ -39,7 +42,14 @@ export default function Timer() {
 			<View style={styles.viewStyle}>
 				{isPlaying ?
 					<></> :
-					<Button title="DEC" onPress={decrementTimer}></Button>
+					<Pressable
+						onPress={decrementTimer}>
+						<Image
+							style={styles.decreaseIcon}
+							source={require('../assets/down-arrow.png')}
+						/>
+					</Pressable>
+
 				}
 				<CountdownCircleTimer
 					size={200}
@@ -58,7 +68,13 @@ export default function Timer() {
 
 				{isPlaying ?
 					<></> :
-					<Button title="INC" onPress={incrementTimer}></Button>
+					<Pressable
+						onPress={incrementTimer}>
+						<Image
+							style={styles.incrementIcon}
+							source={require('../assets/up-arrow.png')}
+						/>
+					</Pressable>
 				}
 			</View>
 			<Button
@@ -84,7 +100,18 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	decreaseIcon: {
+		right: 20,
+		width: 50,
+		height: 50
+	},
+	incrementIcon: {
+		left: 20,
+		width: 50,
+		height: 50
 	}
+
 });
 
 // Helper function to format time to MM:SS
