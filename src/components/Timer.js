@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10,
 		color: '#007AFF'
 	}
-
 });
 
 // Helper function to format time to MM:SS
