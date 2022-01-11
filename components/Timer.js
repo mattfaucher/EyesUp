@@ -53,17 +53,15 @@ export default function Timer() {
 	return (
 		<View>
 			{isPlaying ? countdownTimer :
-				<>
-					<View style={styles.viewStyle}>
-						<Button
-							title="DEC"
-							onPress={decrementTimer}
-						>
-						</Button>
-						{countdownTimer}
-						<Button title="INC" onPress={incrementTimer}></Button>
-					</View>
-				</>
+				<View style={styles.viewStyle}>
+					<Button
+						title="DEC"
+						onPress={decrementTimer}
+					>
+					</Button>
+					{countdownTimer}
+					<Button title="INC" onPress={incrementTimer}></Button>
+				</View>
 			}
 			<Button
 				title={isPlaying ? 'Stop Timer' : 'Resume Timer'}
