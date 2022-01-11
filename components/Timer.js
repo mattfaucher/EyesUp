@@ -65,7 +65,7 @@ export default function Timer() {
 				<View style={styles.button}>
 					<Button
 						title={isPlaying ? 'Stop Timer' : 'Start Timer'}
-						color={'white'}
+						color='white'
 						onPress={() => setIsPlaying(prev => !prev)}
 					>
 					</Button>
@@ -109,12 +109,7 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: 1, height: 13 },
 		borderRadius: 20,
 	},
-	space: {
-		width: 30,
-		height: 40,
-		backgroundColor: 'white'
 
-	},
 });
 
 // Helper function to format time to MM:SS
