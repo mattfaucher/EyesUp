@@ -3,16 +3,14 @@ import {
 	View,
 	Animated,
 	Button,
-	StyleSheet
+	StyleSheet,
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
-import { usePrevious } from '../hooks/usePrevious';
 
 export default function Timer() {
 	const [isPlaying, setIsPlaying] = useState(true);
 	const [resetKey, setResetKey] = useState(0);
 	const [duration, setDuration] = useState(1200);
-	//const prevDuration = usePrevious(duration);
 
 	const incrementTimer = () => {
 		// 40 min is the maximum duration
@@ -36,30 +34,37 @@ export default function Timer() {
 		}
 	}
 
+	const countdownTimer =
+		<CountdownCircleTimer
+			size={200}
+			isPlaying={isPlaying}
+			duration={duration}
+			colors="#A30000"
+			onComplete={() => [true, duration]}
+			key={resetKey}
+		>
+			{({ remainingTime, animatedColor }) => (
+				<Animated.Text style={{ color: animatedColor, fontSize: 48 }}>
+					{formatTime(remainingTime)}
+				</Animated.Text>
+			)}
+		</CountdownCircleTimer>;
+
 	return (
 		<View>
-			<View style={styles.viewStyle}>
-				<Button
-					title="Decrement"
-					onPress={decrementTimer}
-				>
-				</Button>
-				<CountdownCircleTimer
-					size={200}
-					isPlaying={isPlaying}
-					duration={duration}
-					colors="#A30000"
-					onComplete={() => [true, duration]}
-					key={resetKey}
-				>
-					{({ remainingTime, animatedColor }) => (
-						<Animated.Text style={{ color: animatedColor, fontSize: 48 }}>
-							{formatTime(remainingTime)}
-						</Animated.Text>
-					)}
-				</CountdownCircleTimer>
-				<Button title="Increment" onPress={incrementTimer}></Button>
-			</View>
+			{isPlaying ? countdownTimer :
+				<>
+					<View style={styles.viewStyle}>
+						<Button
+							title="DEC"
+							onPress={decrementTimer}
+						>
+						</Button>
+						{countdownTimer}
+						<Button title="INC" onPress={incrementTimer}></Button>
+					</View>
+				</>
+			}
 			<Button
 				title={isPlaying ? 'Stop Timer' : 'Resume Timer'}
 				onPress={() => setIsPlaying(prev => !prev)}
