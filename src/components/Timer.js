@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Animated, Button, StyleSheet } from "react-native";
+import { View, Animated, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Icon from "react-native-vector-icons/FontAwesome";
 import formatTime from "../hooks/formatTime";
@@ -90,21 +90,21 @@ export default function Timer({ expoPushToken }) {
       </View>
       <View style={styles.container}>
         <View style={styles.button}>
-          <Button
-            title={isPlaying ? "Stop Timer" : "Start Timer"}
-            color="white"
+          <TouchableOpacity
             onPress={() => setIsPlaying((prev) => !prev)}
-          ></Button>
+          >
+            <Text style={styles.ButtonText}>{isPlaying ? "Stop Timer" : "Start Timer"}</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.button}>
-          <Button
-            title="Reset Timer"
-            color="white"
+          <TouchableOpacity
             onPress={() => {
               setIsPlaying(false);
               setResetKey((prev) => prev + 1);
             }}
-          ></Button>
+          >
+            <Text style={styles.ButtonText}>Reset Timer</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -135,6 +135,17 @@ const styles = StyleSheet.create({
     shadowRadius: 15,
     shadowOffset: { width: 1, height: 13 },
     borderRadius: 20,
+  },
+  ButtonText: {
+    color: 'white',
+    fontSize: 18,
+    width: 150,
+    height: 40,
+    textAlign: "center",
+    marginHorizontal: 0,
+    marginVertical: 8,
+
+
   },
   chevronStyle: {
     marginHorizontal: 10,
