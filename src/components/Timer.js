@@ -45,7 +45,7 @@ export default function Timer({ expoPushToken }) {
 		}
 	}
 
-	const push = async () => await sendPushNotification(expoPushToken, message);
+	const sendPush = async () => await sendPushNotification(expoPushToken, message);
 
 	return (
 		<View>
@@ -57,13 +57,11 @@ export default function Timer({ expoPushToken }) {
 				<CountdownCircleTimer
 					size={200}
 					isPlaying={isPlaying}
-					// TODO: uncomment original duration line
-					//duration={duration}
-					duration={5}
+					duration={duration}
 					colors="#007AFF"
 					onComplete={() => {
-						push();
-						return [true, 5000];
+						sendPush();
+						return [true, 20000];
 					}}
 					key={resetKey}
 				>
