@@ -118,14 +118,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   container: {
+    display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   button: {
-    width: "40%",
+    width: 150,
     height: 40,
+    marginHorizontal: 10,
     marginVertical: 50,
     backgroundColor: "#007AFF",
     elevation: 30,
