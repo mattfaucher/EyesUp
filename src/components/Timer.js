@@ -5,13 +5,19 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import formatTime from "../hooks/formatTime";
 import sendPushNotification from "../notifications/sendPushNotification";
 
+
+
 export default function Timer({ expoPushToken }) {
   const MIN_DURATION = 10;
   const MAX_DURATION = 40;
   const [isPlaying, setIsPlaying] = useState(true);
   const [resetKey, setResetKey] = useState(0);
   const [duration, setDuration] = useState(1200);
+  const [colorOn, setColorOn] = React.useState(true);
   const delayToRestartTimerInMilliSeconds = 20000;
+  //note: "#007AFF" is the ios blue color
+
+
   const message = {
     to: expoPushToken,
     sound: "default",
@@ -31,6 +37,7 @@ export default function Timer({ expoPushToken }) {
   };
 
   const decrementTimer = () => {
+
     if (duration <= 60 * MIN_DURATION) {
       setDuration(60 * MIN_DURATION);
       setResetKey((prev) => prev + 1);
@@ -40,8 +47,13 @@ export default function Timer({ expoPushToken }) {
     }
   };
 
+  const applyColor = () => {
+    setColorOn(prev => !prev)
+  }
+
   const sendPush = async () =>
     await sendPushNotification(expoPushToken, message);
+
 
   return (
     <View>
@@ -50,9 +62,24 @@ export default function Timer({ expoPushToken }) {
           <></>
         ) : (
           <Icon
+            name="paint-brush"
+            size={40}
+            style={styles.paintStyle}
+            color={global.currentColor[0]}
+            onPress={applyColor}
+          />
+        )}
+      </View>
+
+      <View style={styles.viewStyle}>
+        {isPlaying ? (
+          <></>
+        ) : (
+          <Icon
             name="chevron-down"
             size={80}
             style={styles.chevronStyle}
+            color={global.currentColor[0]}
             onPress={decrementTimer}
           />
         )}
@@ -60,7 +87,7 @@ export default function Timer({ expoPushToken }) {
           size={200}
           isPlaying={isPlaying}
           duration={duration}
-          colors="#007AFF"
+          colors={[[colorOn ? global.currentColor[0] : global.currentColor[0]]]}
           onComplete={() => {
             sendPush();
             return [true, delayToRestartTimerInMilliSeconds];
@@ -68,9 +95,11 @@ export default function Timer({ expoPushToken }) {
           key={resetKey}
         >
           {({ remainingTime, animatedColor }) => (
-            <Animated.Text style={{ color: animatedColor, fontSize: 48 }}>
+            <Animated.Text
+              style={{ color: global.currentColor[0], fontSize: 48 }
+              }>
               {remainingTime == 0 ? (
-                <Animated.Text color={animatedColor}>Done</Animated.Text>
+                <Animated.Text color={global.currentColor[0]}>Done</Animated.Text>
               ) : (
                 formatTime(remainingTime)
               )}
@@ -80,27 +109,36 @@ export default function Timer({ expoPushToken }) {
         {isPlaying ? (
           <></>
         ) : (
-          <Icon
+          < Icon
             name="chevron-up"
             size={80}
             style={styles.chevronStyle}
+            color={global.currentColor[0]}
             onPress={incrementTimer}
           />
         )}
       </View>
       <View style={styles.container}>
-        <View style={styles.button}>
+        <View style={styles.button}
+          backgroundColor={global.currentColor[0]}>
           <TouchableOpacity
-            onPress={() => setIsPlaying((prev) => !prev)}
+            onPress={() => {
+              setIsPlaying((prev) => !prev)
+              //setColorOn(prev => !prev)
+            }}
           >
             <Text style={styles.ButtonText}>{isPlaying ? "Stop Timer" : "Start Timer"}</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.button}>
+        <View style={styles.button}
+          backgroundColor={global.currentColor[0]}>
           <TouchableOpacity
             onPress={() => {
               setIsPlaying(false);
               setResetKey((prev) => prev + 1);
+
+              //setColorOn(prev => !prev)
+              //console.log(global.currentColor[0]);
             }}
           >
             <Text style={styles.ButtonText}>Reset Timer</Text>
@@ -148,7 +186,9 @@ const styles = StyleSheet.create({
 
   },
   chevronStyle: {
-    marginHorizontal: 10,
-    color: "#007AFF",
+    marginHorizontal: 10
+  },
+  paintStyle: {
+    marginLeft: 300
   },
 });
