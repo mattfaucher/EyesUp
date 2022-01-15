@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { ColorPicker } from 'react-native-color-picker'
 import Slider from '@react-native-community/slider';
 import { NavigationHelpersContext } from '@react-navigation/native';
 import currentColor from '../components/Timer'
+import { borderTopColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function Settings() {
 
@@ -12,7 +13,9 @@ export default function Settings() {
 
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
+			<Text style={styles.titleLayout}>select a new timer color.
+			</Text>
 			<ColorPicker
 				onColorSelected={
 					(color) => global.currentColor[0] = color
@@ -21,15 +24,16 @@ export default function Settings() {
 				}
 
 
-				//alterColor(color)}
-				//alert(`Color selected: ${color}`)}
-				//alterColor(color)}
 				style={styles.colorpiker}
 				sliderComponent={Slider}
 
 			/>
+			<Text style={styles.textLayout}>select color for timer by tapping center button
+			</Text>
 
-		</View>
+
+
+		</SafeAreaView>
 	);
 }
 
@@ -41,6 +45,20 @@ const styles = StyleSheet.create({
 	},
 	colorpiker: {
 		width: 350,
-		height: 600,
+		height: 550,
+	},
+	titleLayout: {
+
+		top: 30,
+		"color": "black",
+		"fontSize": 30,
+		"fontWeight": "bold",
+		"marginBottom": 36,
+
+
+	},
+	textLayout: {
+		//textAlign: 'center',
+		alignContent: 'stretch'
 	}
 });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Animated, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Button } from "react-native-web";
 import formatTime from "../hooks/formatTime";
 import sendPushNotification from "../notifications/sendPushNotification";
 
@@ -47,12 +48,30 @@ export default function Timer({ expoPushToken }) {
     }
   };
 
+  const applyColor = () => {
+    setColorOn(prev => !prev)
+  }
+
   const sendPush = async () =>
     await sendPushNotification(expoPushToken, message);
 
 
   return (
     <View>
+      <View style={styles.viewStyle}>
+        {isPlaying ? (
+          <></>
+        ) : (
+          <Icon
+            name="paint-brush"
+            size={40}
+            style={styles.paintStyle}
+            color={global.currentColor[0]}
+            onPress={applyColor}
+          />
+        )}
+      </View>
+
       <View style={styles.viewStyle}>
         {isPlaying ? (
           <></>
@@ -77,7 +96,9 @@ export default function Timer({ expoPushToken }) {
           key={resetKey}
         >
           {({ remainingTime, animatedColor }) => (
-            <Animated.Text style={{ color: global.currentColor[0], fontSize: 48 }}>
+            <Animated.Text
+              style={{ color: global.currentColor[0], fontSize: 48 }
+              }>
               {remainingTime == 0 ? (
                 <Animated.Text color={global.currentColor[0]}>Done</Animated.Text>
               ) : (
@@ -167,6 +188,11 @@ const styles = StyleSheet.create({
   },
   chevronStyle: {
     marginHorizontal: 10
+    //color= { global.currentColor[0] }
+  },
+  paintStyle: {
+    marginLeft: 300
+    //marginHorizontal: 10
     //color= { global.currentColor[0] }
   },
 });
