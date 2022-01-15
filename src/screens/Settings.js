@@ -12,19 +12,12 @@ export default function Settings() {
 			<ColorPicker
 				onColorSelected={
 					(color) => global.currentColor[0] = color
-
 				}
-
-
 				style={styles.colorpiker}
 				sliderComponent={Slider}
-
 			/>
 			<Text style={styles.textLayout}>select color for timer by tapping center button
 			</Text>
-
-
-
 		</SafeAreaView>
 	);
 }

@@ -12,7 +12,7 @@ import UserCalendar from './src/screens/UserCalendar.js';
 const Tab = createBottomTabNavigator();
 //starts the timer beginning with the ios blue color
 global.currentColor = ["#007AFF"];
-global.changedColor = ['true'];
+
 
 const App = () => {
 
