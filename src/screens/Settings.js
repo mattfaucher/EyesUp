@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { ColorPicker } from 'react-native-color-picker'
 import Slider from '@react-native-community/slider';
-import { NavigationHelpersContext } from '@react-navigation/native';
-import currentColor from '../components/Timer'
-import { borderTopColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function Settings() {
-
-
-	//global.changedColor = !global.changedColor;
-
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -19,8 +12,7 @@ export default function Settings() {
 			<ColorPicker
 				onColorSelected={
 					(color) => global.currentColor[0] = color
-					//console.log(!global.changedColor[0])
-					//global.setColorOn = (prev => !prev)
+
 				}
 
 
@@ -58,7 +50,6 @@ const styles = StyleSheet.create({
 
 	},
 	textLayout: {
-		//textAlign: 'center',
 		alignContent: 'stretch'
 	}
 });

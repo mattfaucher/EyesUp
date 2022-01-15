@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { View, Animated, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Button } from "react-native-web";
 import formatTime from "../hooks/formatTime";
 import sendPushNotification from "../notifications/sendPushNotification";
 
@@ -188,11 +187,8 @@ const styles = StyleSheet.create({
   },
   chevronStyle: {
     marginHorizontal: 10
-    //color= { global.currentColor[0] }
   },
   paintStyle: {
     marginLeft: 300
-    //marginHorizontal: 10
-    //color= { global.currentColor[0] }
   },
 });

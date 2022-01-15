@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './src/screens/Home.js';
 import Settings from './src/screens/Settings.js';
 import UserCalendar from './src/screens/UserCalendar.js';
-import { useState } from 'react/cjs/react.development';
 
 
 const Tab = createBottomTabNavigator();
