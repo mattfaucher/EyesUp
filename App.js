@@ -8,7 +8,11 @@ import Home from './src/screens/Home.js';
 import Settings from './src/screens/Settings.js';
 import UserCalendar from './src/screens/UserCalendar.js';
 
+
 const Tab = createBottomTabNavigator();
+//starts the timer beginning with the ios blue color
+global.currentColor = ["#007AFF"];
+
 
 const App = () => {
   return (
