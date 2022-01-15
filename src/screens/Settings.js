@@ -8,6 +8,7 @@ import currentColor from '../components/Timer'
 export default function Settings() {
 
 
+	//global.changedColor = !global.changedColor;
 
 
 	return (
@@ -15,8 +16,10 @@ export default function Settings() {
 			<ColorPicker
 				onColorSelected={
 					(color) => global.currentColor[0] = color
+					//console.log(!global.changedColor[0])
 					//global.setColorOn = (prev => !prev)
 				}
+
 
 				//alterColor(color)}
 				//alert(`Color selected: ${color}`)}
