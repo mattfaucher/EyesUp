@@ -61,6 +61,7 @@ export default function Timer({ expoPushToken }) {
             name="chevron-down"
             size={80}
             style={styles.chevronStyle}
+            color={global.currentColor[0]}
             onPress={decrementTimer}
           />
         )}
@@ -92,12 +93,14 @@ export default function Timer({ expoPushToken }) {
             name="chevron-up"
             size={80}
             style={styles.chevronStyle}
+            color={global.currentColor[0]}
             onPress={incrementTimer}
           />
         )}
       </View>
       <View style={styles.container}>
-        <View style={styles.button}>
+        <View style={styles.button}
+          backgroundColor={global.currentColor[0]}>
           <TouchableOpacity
             onPress={() => {
               setIsPlaying((prev) => !prev)
@@ -107,7 +110,8 @@ export default function Timer({ expoPushToken }) {
             <Text style={styles.ButtonText}>{isPlaying ? "Stop Timer" : "Start Timer"}</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.button}>
+        <View style={styles.button}
+          backgroundColor={global.currentColor[0]}>
           <TouchableOpacity
             onPress={() => {
               setIsPlaying(false);
@@ -162,7 +166,7 @@ const styles = StyleSheet.create({
 
   },
   chevronStyle: {
-    marginHorizontal: 10,
-    color: "#007AFF",
+    marginHorizontal: 10
+    //color= { global.currentColor[0] }
   },
 });
