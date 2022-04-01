@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -6,17 +6,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Home from './src/screens/Home.js';
 import Settings from './src/screens/Settings.js';
-import UserCalendar from './src/screens/UserCalendar.js';
 
 
 const Tab = createBottomTabNavigator();
 //starts the timer beginning with the ios blue color
 global.currentColor = ["#007AFF"];
+global.selectedDate = ["xxx"];
 
 
 const App = () => {
-
-
   return (
     <>
       <StatusBar style='auto'></StatusBar>
@@ -43,16 +41,7 @@ const App = () => {
               )
             }}
           />
-          <Tab.Screen
-            name="Calendar"
-            component={UserCalendar}
-            options={{
-              tabBarLabel: 'Calendar',
-              tabBarIcon: ({ color }) => (
-                <Icon name="calendar" size={30} color={color} />
-              )
-            }}
-          />
+          
           <Tab.Screen
             name="Settings"
             component={Settings}

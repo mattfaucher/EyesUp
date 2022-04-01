@@ -62,20 +62,6 @@ export default function Timer({ expoPushToken }) {
           <></>
         ) : (
           <Icon
-            name="paint-brush"
-            size={40}
-            style={styles.paintStyle}
-            color={global.currentColor[0]}
-            onPress={applyColor}
-          />
-        )}
-      </View>
-
-      <View style={styles.viewStyle}>
-        {isPlaying ? (
-          <></>
-        ) : (
-          <Icon
             name="chevron-down"
             size={80}
             style={styles.chevronStyle}
