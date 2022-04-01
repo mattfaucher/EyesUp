@@ -4,6 +4,7 @@ import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Icon from "react-native-vector-icons/FontAwesome";
 import formatTime from "../hooks/formatTime";
 import sendPushNotification from "../notifications/sendPushNotification";
+import './Settings.js';
 
 
 
