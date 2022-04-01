@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { ColorPicker } from 'react-native-color-picker'
 import Slider from '@react-native-community/slider';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function Settings() {
 
