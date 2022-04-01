@@ -14,7 +14,11 @@ export default function Settings() {
 			<ColorPicker
 				onColorSelected={
 					(color) => global.currentColor[0] = color
+					//simple way: use props
 					//https://www.geeksforgeeks.org/how-to-send-state-props-to-another-component-in-react-with-onclick/
+
+					//redux for state management
+					//https://www.youtube.com/watch?v=BtJoy4G3N8U
 				}
 				style={styles.colorpiker}
 				sliderComponent={Slider}
